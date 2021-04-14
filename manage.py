@@ -25,7 +25,7 @@ migrate = Migrate(app, db)
 manager.add_command('db', MigrateCommand)
 
 #db table creation
-db.create_all()
+#db.create_all()
 
 @manager.command
 def run():
