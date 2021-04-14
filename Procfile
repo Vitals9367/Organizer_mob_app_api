@@ -1,1 +1,1 @@
-web: gunicorn --bind=0.0.0.0 --workers=4 python manage.py run
+web: gunicorn --bind=0.0.0.0 --workers=4 manage:app
