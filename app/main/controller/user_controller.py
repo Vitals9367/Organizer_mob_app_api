@@ -26,7 +26,7 @@ class UserList(Resource):
     def post(self):
         """Creates a new User """
         data = request.json
-        return save_new_user(data=data), 200
+        return save_new_user(data=data)
 
 #Individual user class
 @api.route('/<username>')
