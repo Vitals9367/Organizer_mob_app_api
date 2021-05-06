@@ -29,7 +29,7 @@ class Auth:
             else:
                 response_object = {
                     'status': 'fail',
-                    'message': 'email or password does not match.'
+                    'message': 'Email or password does not match.'
                 }
                 return response_object, 401
 

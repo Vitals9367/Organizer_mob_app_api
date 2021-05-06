@@ -23,6 +23,7 @@ class User(db.Model):
     username = db.Column(db.String(50), unique=True)
     password_hash = db.Column(db.String(100))
     events = db.relationship('Event', backref='user',uselist=True, lazy='dynamic')
+    image_name = db.Column(db.String(200));
 
     friends = db.relationship('User',  # defining the relationship, User is left side entity
                               secondary=friends,

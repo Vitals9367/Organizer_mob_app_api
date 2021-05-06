@@ -34,3 +34,7 @@ class EventDto:
         'created_by_id': fields.Integer(description='The user id'),
         'date': fields.DateTime(required=True, description='The date ')
     })
+
+#Image DTO
+class ImageDto:
+    api = Namespace('image', description='image related actions')

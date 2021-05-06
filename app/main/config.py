@@ -7,7 +7,7 @@ class DevelopmentConfig(Config):
     # uncomment the line below to use postgres
     # SQLALCHEMY_DATABASE_URI = postgres_local_base
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///../database.db'
+    SQLALCHEMY_DATABASE_URI = 'postgres://vmyedshomcjtgj:6e0e584bc46342dc27cf732f8e3f7228c81146b448c8744a6dfc4908eb4a728f@ec2-3-91-127-228.compute-1.amazonaws.com:5432/d74an82tip9b3g'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     SQLALCHEMY_ECHO = True
 
