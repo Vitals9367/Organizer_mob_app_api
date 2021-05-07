@@ -62,7 +62,7 @@ def upload_user_image(username, request):
         }
         return response, 404
 
-    if os.path.isfile("app\\main\\images\\"+user.image_name):
+    if user.image_name or os.path.isfile("app\\main\\images\\"+user.image_name):
        os.remove("app\\main\\images\\"+user.image_name)
 
     user.image_name = name;
