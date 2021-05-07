@@ -24,11 +24,7 @@ def get_user_image(username):
         if user.image_name:
             return send_file("images\\"+user.image_name, mimetype='image/gif')
 
-        response = {
-            'status': 'fail',
-            'message': 'No image',
-        }
-        return response, 404
+        return send_file("images\\person.png", mimetype='image/gif')
 
     else:
         response = {
