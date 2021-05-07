@@ -9,7 +9,11 @@ from app.main import create_app, db
 from flask_cors import CORS
 from app.main.model import *
 
+from werkzeug.contrib.fixers import ProxyFix
+
 app = create_app('dev')
+
+app.wsgi_app = ProxyFix(app.wsgi_app)
 
 CORS(app)
 
