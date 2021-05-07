@@ -1,4 +1,6 @@
 {
     "python.pythonPath": "d:\\Darbai\\Sav darbai\\React Native\\FlaskApi\\env\\Scripts\\python.exe",
-    "python.formatting.provider": "autopep8"
+    "python.formatting.provider": "autopep8",
+    "appService.defaultWebAppToDeploy": "/subscriptions/bf1be332-4e28-4ec6-b74a-ad2ff10965ba/resourceGroups/Organizer_app/providers/Microsoft.Web/sites/organizerapi",
+    "appService.deploySubpath": "."
 }
