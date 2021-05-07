@@ -7,7 +7,6 @@ from app.__init import blueprint
 from app.main import create_app, db
 
 from flask_cors import CORS
-
 from app.main.model import *
 
 app = create_app('dev')

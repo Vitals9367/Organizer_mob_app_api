@@ -2,6 +2,13 @@ class Config:
     SECRET_KEY = '\xfd{H\xe5<\x95\xf9\xe3\x96.5\xd1\x01O<!\xd5\xa2\xa0\x9fR"\xa1\xa8'
     DEBUG = False
 
+    MAIL_SERVER = 'smtp.gmail.com'
+    MAIL_PORT = 465
+    MAIL_USERNAME = 'vitalijus.alsauskas@gmail.com'
+    MAIL_PASSWORD = 'mariukas'
+    MAIL_USE_TLS = False
+    MAIL_USE_SSL = True
+
 #Dev config
 class DevelopmentConfig(Config):
     # uncomment the line below to use postgres

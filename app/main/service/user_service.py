@@ -1,16 +1,20 @@
 import uuid
 import datetime
 
-from app.main import db
+from flask_mail import Message
+
+from app.main import db, mail
 from app.main.model.user import User
 from typing import Dict, Tuple
 
+from sqlalchemy import or_
 
 #Creating new user
 def save_new_user(data: Dict[str, str]) -> Tuple[Dict[str, str], int]:
 
     #Checking if email exists
-    user = User.query.filter_by(email=data['email']).first()
+    user = User.query.filter(
+        or_(User.email == data['email'], User.username==data['username'])).first()
 
     #If not creating new user
     if not user:
@@ -24,9 +28,15 @@ def save_new_user(data: Dict[str, str]) -> Tuple[Dict[str, str], int]:
         #Saving user
         save_changes(new_user)
 
+        msg = Message(new_user.username + ", your account has been created!",
+        sender="vitalijus.alsauskas@gmail.com",
+        recipients=[new_user.email])
+
+        #mail.send(msg)
+
         #Generating Auth token
         return generate_token(new_user)
-        
+
     else:
         response_object = {
             'status': 'fail',
