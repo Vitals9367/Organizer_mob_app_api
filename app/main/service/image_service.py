@@ -118,7 +118,7 @@ def upload_user_image(username, request):
 
     user.image_name = genereted_string
 
-    blob_client = container_client.get_blob_client(user.genereted_string)
+    blob_client = container_client.get_blob_client(user.image_name)
 
     blob_client.upload_blob(file)
 
