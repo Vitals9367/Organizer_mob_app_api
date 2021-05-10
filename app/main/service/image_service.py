@@ -27,7 +27,7 @@ def get_img_url_with_blob_sas_token(blob_name):
         blob_name=blob_name,
         account_key=account_key,
         permission=ContainerSasPermissions(read=True),
-        expiry=datetime.utcnow() + timedelta(hours=1)
+        expiry=datetime.utcnow() + timedelta(hours=3)
     )
     blob_url_with_blob_sas_token = f"https://{account_name}.blob.core.windows.net/{container_name}/{blob_name}?{blob_sas_token}"
     return blob_url_with_blob_sas_token
@@ -50,8 +50,8 @@ def get_user_image(username):
             
             blob = BlobClient.from_connection_string(
                 conn_str=connect_str, container_name=container_name, blob_name=user.image_name)
-
             exists = blob.exists()
+
             if exists:
                 response = {
                     "status" : "success",
@@ -108,12 +108,20 @@ def upload_user_image(username, request):
         return response, 404
 
     if user.image_name:
-        if os.path.isfile("app\\main\\images\\"+user.image_name):
-            os.remove("app\\main\\images\\"+user.image_name)
+
+        blob = BlobClient.from_connection_string(
+            conn_str=connect_str, container_name=container_name, blob_name=user.image_name)
+        exists = blob.exists()
+
+        if exists:
+            blob_client = container_client.get_blob_client(user.image_name)
+            blob_client.delete_blob()
 
     user.image_name = name;
 
-    file.save("app\\main\\images\\"+name)
+    blob_client = container_client.get_blob_client(user.image_name)
+
+    blob_client.upload_blob(file)
 
     db.session.commit()
 
