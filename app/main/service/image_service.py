@@ -6,6 +6,31 @@ from app.main.model.user import User
 from typing import Dict, Tuple
 
 from werkzeug import secure_filename
+from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient, generate_blob_sas, ContainerSasPermissions
+from datetime import datetime, timedelta
+
+#Azure storage connection string
+connect_str = "DefaultEndpointsProtocol=https;AccountName=organizerapi;AccountKey=C52pAkRL3yjhtRK+AZqyZEiCI++Ov5FQHSkvYcwMspH0CHtiVIy/Opv944+mX97zy+owl1BZmnZQyoG12f4KAQ==;EndpointSuffix=core.windows.net"
+
+account_name = "organizerapi"
+account_key = "C52pAkRL3yjhtRK+AZqyZEiCI++Ov5FQHSkvYcwMspH0CHtiVIy/Opv944+mX97zy+owl1BZmnZQyoG12f4KAQ=="
+
+blob_service_client = BlobServiceClient.from_connection_string(connect_str)
+
+container_name = 'pictures'
+container_client = blob_service_client.get_container_client(container_name)
+
+def get_img_url_with_blob_sas_token(blob_name):
+    blob_sas_token = generate_blob_sas(
+        account_name=account_name,
+        container_name=container_name,
+        blob_name=blob_name,
+        account_key=account_key,
+        permission=ContainerSasPermissions(read=True),
+        expiry=datetime.utcnow() + timedelta(hours=1)
+    )
+    blob_url_with_blob_sas_token = f"https://{account_name}.blob.core.windows.net/{container_name}/{blob_name}?{blob_sas_token}"
+    return blob_url_with_blob_sas_token
 
 #Checking allowed extensions
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
@@ -22,9 +47,29 @@ def get_user_image(username):
 
     if user:
         if user.image_name:
-            return send_file("images\\"+user.image_name, mimetype='image/gif')
+            
+            blob = BlobClient.from_connection_string(
+                conn_str=connect_str, container_name=container_name, blob_name=user.image_name)
 
-        return send_file("images\\person.png", mimetype='image/gif')
+            exists = blob.exists()
+            if exists:
+                response = {
+                    "status" : "success",
+                    "url": get_img_url_with_blob_sas_token(user.image_name)
+                }
+                return response
+
+            response = {
+                "status": "success",
+                "url": get_img_url_with_blob_sas_token("person.png")
+            }
+            return response
+
+        response = {
+            "status": "success",
+            "url": get_img_url_with_blob_sas_token("person.png")
+        }
+        return response
 
     else:
         response = {
