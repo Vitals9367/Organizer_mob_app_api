@@ -1,9 +1,6 @@
-from flask.helpers import send_file
-from flask import request
-import os
+import uuid
 from app.main import db
 from app.main.model.user import User
-from typing import Dict, Tuple
 
 from werkzeug import secure_filename
 from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient, generate_blob_sas, ContainerSasPermissions
@@ -117,9 +114,11 @@ def upload_user_image(username, request):
             blob_client = container_client.get_blob_client(user.image_name)
             blob_client.delete_blob()
 
-    user.image_name = name;
+    genereted_string = uuid.uuid1().hex
 
-    blob_client = container_client.get_blob_client(user.image_name)
+    user.image_name = genereted_string
+
+    blob_client = container_client.get_blob_client(user.genereted_string)
 
     blob_client.upload_blob(file)
 
