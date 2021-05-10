@@ -114,7 +114,7 @@ def upload_user_image(username, request):
             blob_client = container_client.get_blob_client(user.image_name)
             blob_client.delete_blob()
 
-    genereted_string = uuid.uuid1().hex
+    genereted_string = uuid.uuid4().hex
 
     user.image_name = genereted_string
 
