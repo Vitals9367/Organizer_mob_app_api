@@ -16,7 +16,7 @@ class DevelopmentConfig(Config):
     # SQLALCHEMY_DATABASE_URI = postgres_local_base
 
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'postgres://vmyedshomcjtgj:6e0e584bc46342dc27cf732f8e3f7228c81146b448c8744a6dfc4908eb4a728f@ec2-3-91-127-228.compute-1.amazonaws.com:5432/d74an82tip9b3g'
+    SQLALCHEMY_DATABASE_URI = 'postgres://jrfowfbeerorar:505a9e414de46031fe0c5fbfb7a4d409f3cc3892580f271d0c020df04f94f361@ec2-54-217-195-234.eu-west-1.compute.amazonaws.com:5432/deplhosaj6s9j2'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     SQLALCHEMY_ECHO = True
 
