@@ -126,6 +126,6 @@ def upload_user_image(username, request):
 
     response = {
         'status': 'success',
-        'message': 'Image uploaded',
+        'url': get_img_url_with_blob_sas_token(user.image_name),
     }
     return response, 200
