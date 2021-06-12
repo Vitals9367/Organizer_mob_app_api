@@ -1,5 +1,5 @@
 # Organizer Mobile App API #
-🗺️ Restaurant navigation and review app API made Flask.<br/>
+🗺️ Restaurant navigation and review app API made with Flask.<br/>
 Made during fourth semester of my studies at Kaunas University of Applied Sciences.<br/>
 
 🔗 [Organizer Mobile App](https://github.com/Vitals9367/Organizer_mob_app)
