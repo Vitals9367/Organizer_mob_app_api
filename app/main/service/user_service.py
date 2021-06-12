@@ -54,6 +54,28 @@ def get_all_users():
 def get_a_user(username):
     return User.query.filter_by(username=username).first()
 
+
+#change user email
+def change_email(username,email):
+    user = User.query.filter_by(username=username).first()
+
+    if not user:
+        response_object = {
+            'status': 'fail',
+            'message': 'User not found',
+        }
+        return response_object, 404
+
+    user.email = email;
+    db.session.commit()
+    
+    response_object = {
+        'status': 'success',
+        'message': 'User email changed!',
+    }
+    return response_object, 200
+
+
 #Getting user friends
 #Returns list of friends
 def get_user_friends(username):

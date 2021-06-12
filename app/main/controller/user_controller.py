@@ -2,7 +2,7 @@ from flask import request
 from flask_restx import Resource
 
 from ..util.dto import UserDto
-from ..service.user_service import save_new_user, get_all_users, get_a_user, get_user_friends
+from ..service.user_service import save_new_user, get_all_users, get_a_user, get_user_friends, change_email
 
 #User DTO variables
 api = UserDto.api
@@ -44,6 +44,26 @@ class User(Resource):
             api.abort(404)
         else:
             return user
+
+#Change email route
+@api.route('/<username>/change_email')
+@api.param('username', 'The User identifier')
+@api.response(404, 'User not found.')
+class UserChangeEmail(Resource):
+
+    #changing user email
+    @api.doc('get a user')
+    def post(self, username):
+        data = request.json
+
+        if data:
+            return change_email(username,data['email'])
+        else:
+            response_object = {
+                'status': 'fail',
+                'message': 'no email provided'
+            }
+            return response_object, 404
 
 #User friends class
 @api.route('/<username>/friends')

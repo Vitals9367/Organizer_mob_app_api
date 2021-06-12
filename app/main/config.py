@@ -6,8 +6,8 @@ class Config:
 
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 465
-    MAIL_USERNAME = 'vitalijus.alsauskas@gmail.com'
-    MAIL_PASSWORD = 'mariukas'
+    MAIL_USERNAME = 'email'
+    MAIL_PASSWORD = 'password'
     MAIL_USE_TLS = False
     MAIL_USE_SSL = True
 
@@ -17,7 +17,7 @@ class DevelopmentConfig(Config):
     # SQLALCHEMY_DATABASE_URI = postgres_local_base
 
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'postgres://jrfowfbeerorar:505a9e414de46031fe0c5fbfb7a4d409f3cc3892580f271d0c020df04f94f361@ec2-54-217-195-234.eu-west-1.compute.amazonaws.com:5432/deplhosaj6s9j2'
+    SQLALCHEMY_DATABASE_URI = 'db'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     SQLALCHEMY_ECHO = True
 

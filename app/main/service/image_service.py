@@ -7,10 +7,10 @@ from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient, g
 from datetime import datetime, timedelta
 
 #Azure storage connection string
-connect_str = "DefaultEndpointsProtocol=https;AccountName=organizerapi;AccountKey=C52pAkRL3yjhtRK+AZqyZEiCI++Ov5FQHSkvYcwMspH0CHtiVIy/Opv944+mX97zy+owl1BZmnZQyoG12f4KAQ==;EndpointSuffix=core.windows.net"
+connect_str = "string"
 
 account_name = "organizerapi"
-account_key = "C52pAkRL3yjhtRK+AZqyZEiCI++Ov5FQHSkvYcwMspH0CHtiVIy/Opv944+mX97zy+owl1BZmnZQyoG12f4KAQ=="
+account_key = "key"
 
 blob_service_client = BlobServiceClient.from_connection_string(connect_str)
 
