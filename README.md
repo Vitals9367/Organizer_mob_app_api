@@ -21,4 +21,5 @@ Made during fourth semester of my studies at Kaunas University of Applied Scienc
 🔌 [API Boilerplate](https://orgmobapi.herokuapp.com/)
 
 API created for Organizer mobile restaurant app.
+
 🔗 [Organizer Mobile App](https://github.com/Vitals9367/Organizer_mob_app)
