@@ -9,6 +9,9 @@ Made during fourth semester of my studies at Kaunas University of Applied Scienc
 ***Hosting ->*** Heroku<br/>
 ***Maps ->*** Google API<br/>
 
+🔌 [API Boilerplate](https://orgmobapi.herokuapp.com/)<br/>
+🔗 [Organizer Mobile App](https://github.com/Vitals9367/Organizer_mob_app)
+
 *Endpoints:*
 - /user/
 - /user/{username}
@@ -18,6 +21,3 @@ Made during fourth semester of my studies at Kaunas University of Applied Scienc
 - /iamge/{username}
 - /auth/login
 - /auth/logout
-
-🔌 [API Boilerplate](https://orgmobapi.herokuapp.com/)
-🔗 [Organizer Mobile App](https://github.com/Vitals9367/Organizer_mob_app)
